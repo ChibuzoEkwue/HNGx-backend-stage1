@@ -26,17 +26,14 @@ app.get("/api", (req, res) => {
 
 	const current_day = days[date.getDay()];
 
-	date.setMilliseconds(0);
-
-	const dateISOString = date.toISOString().replace(".000Z", "Z");
-
+    const withoutMs = date.toISOString().split(".")[0] + "Z";
 
 	res.json({
 		slack_name:
 			slack_name ||
 			"Enter your slackname by passing it as a value to the query params slack_name",
 		current_day,
-		utc_time: dateISOString,
+		utc_time: withoutMs,
 		track:
 			track ||
 			"Enter your track by passing it as a value to the query params track",
