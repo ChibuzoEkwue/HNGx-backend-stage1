@@ -5,6 +5,11 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.get("/", (req, res) => {
+	res.json({
+		status_code: 200,
+	});
+});
+app.get("/api", (req, res) => {
 	const { slack_name, track } = req.query;
 
 	const date = new Date();
